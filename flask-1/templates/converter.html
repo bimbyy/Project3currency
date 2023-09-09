@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Currency Converter</h1>
+        <form method="POST" action="{{request.path}}">
+            <div class="form-group">
+                <label for="from_currency">From Currency (e.g., USD):</label>
+                <input type="text" class="form-control" id="from_currency" name="from_currency" required>
+            </div>
+
+            <div class="form-group">
+                <label for="to_currency">To Currency (e.g., EUR):</label>
+                <input type="text" class="form-control" id="to_currency" name="to_currency" required>
+            </div>
+
+            <div class="form-group">
+                <label for="amount">Amount to Convert:</label>
+                <input type="text" class="form-control" id="amount" name="amount" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Convert</button>
+        </form>
+
+        {% if result_amount is defined and result_amount != "" %}
+        <div class="result">
+            <p class="result-heading">Converted {{ from_currency }} to {{ to_currency }}</p>
+            <p class="result-text">The total conversion is {{ result_amount }} {{ result_currency_symbol }}</p>
+        </div>
+        {% endif %}
+        
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
