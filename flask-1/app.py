@@ -1,8 +1,27 @@
 from flask import Flask, render_template, request
 import requests
 
-app = Flask(__name__)
-
+currency_symbols = {
+    "AED": "د.إ",  # United Arab Emirates Dirham
+    "AUD": "$",    # Australian Dollar
+    "BRL": "R$",   # Brazilian Real
+    "CAD": "$",    # Canadian Dollar
+    "CHF": "Fr",   # Swiss Franc
+    "CNY": "¥",    # Chinese Yuan
+    "EUR": "€",    # Euro
+    "GBP": "£",    # British Pound Sterling
+    "HKD": "$",    # Hong Kong Dollar
+    "INR": "₹",    # Indian Rupee
+    "JPY": "¥",    # Japanese Yen
+    "KRW": "₩",    # South Korean Won
+    "MXN": "$",    # Mexican Peso
+    "NZD": "$",    # New Zealand Dollar
+    "RUB": "₽",    # Russian Ruble
+    "SGD": "$",    # Singapore Dollar
+    "TRY": "₺",    # Turkish Lira
+    "USD": "$",    # United States Dollar
+    "ZAR": "R",    # South African Rand
+}
 # Function to fetch exchange rate
 def get_exchange_rate(from_currency, to_currency):
     url = f"https://api.exchangerate.host/latest"
